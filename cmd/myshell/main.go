@@ -22,16 +22,15 @@ func main() {
 
 		argv := strings.Split(cmd, " ")
 
-		if argv[0] == "exit" {
-			var i int
-			if _, err := fmt.Sscan(argv[1], &i); err == nil {
-				os.Exit(i)
-			} else {
-				log.Fatal(err)
-			}
-		}
+		switch argv[0] {
 
-		fmt.Printf("%s: command not found\n", cmd)
+		case "exit":
+			exit(argv)
+		case "echo":
+			echo(argv)
+		default:
+			fmt.Printf("%s: command not found\n", cmd)
+		}
 
 	}
 }
