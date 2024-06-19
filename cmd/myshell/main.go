@@ -17,7 +17,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("%s: command not found \n", text)
+	fmt.Printf("%s: command not found\n", text)
 	// Wait for user input
 	bufio.NewReader(os.Stdin).ReadString('\n')
 }
