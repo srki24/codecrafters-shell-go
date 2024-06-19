@@ -11,15 +11,27 @@ import (
 func main() {
 	for {
 		fmt.Fprint(os.Stdout, "$ ")
-		text, err := bufio.NewReader(os.Stdin).ReadString('\n')
+		cmd, err := bufio.NewReader(os.Stdin).ReadString('\n')
 
 		if err != nil {
 			log.Fatal(err)
 			os.Exit(1)
 		}
 
-		text = strings.TrimSpace(text)
-		fmt.Printf("%s: command not found\n", text)
+		cmd = strings.TrimSpace(cmd)
+
+		argv := strings.Split(cmd, " ")
+
+		if argv[0] == "exit" {
+			var i int
+			if _, err := fmt.Sscan(argv[1], &i); err == nil {
+				os.Exit(i)
+			} else {
+				log.Fatal(err)
+			}
+		}
+
+		fmt.Printf("%s: command not found\n", cmd)
 
 	}
 }
