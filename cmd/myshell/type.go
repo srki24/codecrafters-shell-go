@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 func go_type(argv []string) {
@@ -18,12 +17,12 @@ func go_type(argv []string) {
 		return
 	}
 
-	paths := strings.Split(os.Getenv("PATH"), ":")
+	paths := filepath.SplitList(os.Getenv("PATH"))
 
 	for _, path := range paths {
 		fp := filepath.Join(path, cmd)
 
-		if _, err := os.Stat(fp); err != nil {
+		if _, err := os.Stat(fp); err == nil {
 			fmt.Printf("%s is %s\n", cmd, path)
 			return
 		}
