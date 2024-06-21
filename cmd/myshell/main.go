@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+
 	for {
 		fmt.Fprint(os.Stdout, "$ ")
 		cmd, err := bufio.NewReader(os.Stdin).ReadString('\n')
@@ -22,13 +23,11 @@ func main() {
 
 		argv := strings.Split(cmd, " ")
 
-		switch argv[0] {
+		functions = getAllFunctions()
 
-		case "exit":
-			exit(argv)
-		case "echo":
-			echo(argv)
-		default:
+		if f, ok := getFunction(argv[0]); ok {
+			f(argv)
+		} else {
 			fmt.Printf("%s: command not found\n", cmd)
 		}
 

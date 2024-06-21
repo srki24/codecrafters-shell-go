@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func echo(argv []string) {
+func go_echo(argv []string) {
 	if len(argv) == 1 {
 		return
 	}
