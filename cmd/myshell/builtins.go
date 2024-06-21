@@ -20,30 +20,16 @@ func getAllFunctions() []go_function {
 }
 
 func getFunction(name string) (go_func func(argv []string), ok bool) {
+	go_func = nil
+	ok = false
+
 	if functions == nil {
 		functions = getAllFunctions()
 	}
 
-	go_func = nil
-	ok = false
 	for _, f := range functions {
 		if f.name == name {
 			go_func = f.impl
-			ok = true
-			break
-		}
-	}
-	return
-}
-
-func hasFunction(name string) (ok bool) {
-	if functions == nil {
-		functions = getAllFunctions()
-	}
-
-	ok = false
-	for _, f := range functions {
-		if f.name == name {
 			ok = true
 			break
 		}

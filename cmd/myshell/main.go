@@ -27,6 +27,8 @@ func main() {
 
 		if f, ok := getFunction(argv[0]); ok {
 			f(argv)
+		} else if fp, ok := getExecutablePath(cmd); ok {
+			executeCmd(fp)
 		} else {
 			fmt.Printf("%s: command not found\n", cmd)
 		}
