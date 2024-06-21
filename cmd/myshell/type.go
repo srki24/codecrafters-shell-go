@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 )
 
 func go_type(argv []string) {
@@ -13,6 +15,16 @@ func go_type(argv []string) {
 	if hasFunction(cmd) {
 		fmt.Printf("%s is a shell builtin\n", cmd)
 		return
+	}
+
+	paths := filepath.SplitList(os.Getenv("PATH"))
+	for _, path := range paths {
+		fp := filepath.Join(path, cmd)
+
+		if _, err := os.Stat(fp); err != nil {
+			fmt.Printf("%s is %s\n", cmd, fp)
+			return
+		}
 	}
 
 	fmt.Printf("%s: not found\n", cmd)
