@@ -18,6 +18,8 @@ func go_type(argv []string) {
 	}
 
 	paths := filepath.SplitList(os.Getenv("PATH"))
+
+	println(paths)
 	for _, path := range paths {
 		fp := filepath.Join(path, cmd)
 
