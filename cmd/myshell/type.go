@@ -11,7 +11,7 @@ func go_type(argv []string) {
 	}
 
 	if hasFunction(cmd) {
-		fmt.Printf("%s is a shell builtin", cmd)
+		fmt.Printf("%s is a shell builtin\n", cmd)
 		return
 	}
 
