@@ -22,7 +22,7 @@ func go_type(argv []string) {
 		fp := filepath.Join(path, cmd)
 
 		if _, err := os.Stat(fp); err != nil {
-			fmt.Printf("%s is %s\n", cmd, fp)
+			fmt.Printf("%s is %s\n", cmd, path)
 			return
 		}
 	}
