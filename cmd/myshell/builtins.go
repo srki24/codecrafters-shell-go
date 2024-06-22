@@ -14,6 +14,7 @@ func getAllFunctions() []go_function {
 			go_function{name: "echo", impl: go_echo},
 			go_function{name: "type", impl: go_type},
 			go_function{name: "pwd", impl: go_pwd},
+			go_function{name: "cd", impl: go_cd},
 		)
 	}
 

@@ -33,6 +33,9 @@ func executeCmd(name string, args []string) {
 
 	cmd := exec.Command(name, args...)
 	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Stdin = os.Stdin
+
 	if errors.Is(cmd.Err, exec.ErrDot) {
 		cmd.Err = nil
 	}
