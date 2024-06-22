@@ -6,9 +6,9 @@ import (
 )
 
 func go_echo(argv ...string) {
-	if len(argv) == 1 {
+	if len(argv) == 0 {
 		return
 	}
 
-	fmt.Println(strings.Join(argv[1:], " "))
+	fmt.Println(strings.Join(argv, " "))
 }
