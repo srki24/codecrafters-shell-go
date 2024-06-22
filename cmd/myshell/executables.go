@@ -8,11 +8,11 @@ import (
 	"path/filepath"
 )
 
-func getExecutablePath(cmd string) (path string, ok bool) {
+func getExecutablePath(name string) (path string, ok bool) {
 
 	paths := filepath.SplitList(os.Getenv("PATH"))
 	for _, p := range paths {
-		fp := filepath.Join(p, cmd)
+		fp := filepath.Join(p, name)
 
 		_, err := exec.LookPath(fp)
 		if errors.Is(err, exec.ErrDot) {
@@ -29,14 +29,14 @@ func getExecutablePath(cmd string) (path string, ok bool) {
 	return
 }
 
-func executeCmd(cmd string) {
+func executeCmd(name string, args []string) {
 
-	c := exec.Command(cmd)
-	if errors.Is(c.Err, exec.ErrDot) {
-		c.Err = nil
+	cmd := exec.Command(name, args...)
+	cmd.Stdout = os.Stdout
+	if errors.Is(cmd.Err, exec.ErrDot) {
+		cmd.Err = nil
 	}
-
-	if err := c.Run(); err != nil {
+	if err := cmd.Run(); err != nil {
 		log.Fatal(err)
 	}
 
