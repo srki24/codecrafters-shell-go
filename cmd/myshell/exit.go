@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func go_exit(argv []string) {
+func go_exit(argv ...string) {
 	if len(argv) == 1 {
 		os.Exit(0)
 	}

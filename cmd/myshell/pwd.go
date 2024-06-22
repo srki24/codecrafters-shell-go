@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func go_pwd(argv []string) {
+func go_pwd(argv ...string) {
 
 	cwd, err := os.Getwd()
 

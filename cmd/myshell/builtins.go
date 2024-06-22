@@ -4,7 +4,7 @@ var functions []go_function
 
 type go_function struct {
 	name string
-	impl func(argv []string)
+	impl func(argv ...string)
 }
 
 func getAllFunctions() []go_function {
@@ -21,7 +21,7 @@ func getAllFunctions() []go_function {
 	return functions
 }
 
-func getFunction(name string) (go_func func(argv []string), ok bool) {
+func getFunction(name string) (go_func func(argv ...string), ok bool) {
 	go_func = nil
 	ok = false
 

@@ -26,7 +26,7 @@ func main() {
 		functions = getAllFunctions()
 
 		if f, ok := getFunction(argv[0]); ok {
-			f(argv)
+			f(argv[1:]...)
 		} else if fp, ok := getExecutablePath(argv[0]); ok {
 			executeCmd(fp, argv[1:])
 		} else {
